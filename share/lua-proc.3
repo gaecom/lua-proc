@@ -1,0 +1,31 @@
+.TH lua-proc 3 "July 10, 2012" "version 1.0"
+.SH NAME
+lua-proc - Lua module for working with UNIX processes.
+.SH DESCRIPTION
+.TP
+.BR "proc.kill(" pid "," [signal] ")"
+Send process PID a SIGNAL (defauls to SIGTERM).
+.TP
+.BR "proc.killall(" name "," [signal] ")"
+Send all processes with NAME a SIGNAL (defaults to SIGTERM).
+.TP
+.BR "proc.list()"
+Get a process list.  The return value is a table with fields pid and name.
+.TP
+.BR "proc.pidof(" name ")"
+Return a table of the PIDS for a given process name.
+
+.SH EXAMPLES
+The following example uses the 
+
+    require 'proc'
+    
+    p = proc.list()
+    for _, k in ipairs(p) do
+        print(k.pid, k.name)
+    end
+
+.SH Authors
+Stephen M. Herwig <smherwig@gmail.com>
+
+
